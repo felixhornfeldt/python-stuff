@@ -47,4 +47,20 @@ def classes():
         x.describe_user()
         x.great_user()
 
+    ###########################
+    class Car():
+        def __init__(self, brand, model, year, rating):
+            self.brand = brand
+            self.model = model
+            self.year = year
+            self.rating = rating
+        
+        # Given Information
+        def g_info(self):
+            print("This is the information given:\n\t" + self.brand + "\n\t" + self.model + "\n\t" + str(self.year) + "\n\t" +str(self.rating) + "\n")
+    
+
+    Car("Volvo", "V40", 2018, 7.5).g_info()
+    ###########################
+
 classes()
