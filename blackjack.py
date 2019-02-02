@@ -17,6 +17,7 @@ def start_values():
 
 def player_hit(p_value):
     p_value += rm.choice(card_values)
+    print("You have: "+str(p_value))
     if p_value > 20:
         print("AI Won!!!")
         return "b"
@@ -79,8 +80,8 @@ def game():
                 continue
             pass
         else:
+            print("You have: "+str(p_game))
             while True:
-                print("You have: "+str(p_game))
                 p_input = input("What is your next move?\nHit(h) or Stay(s)\n")
                 if p_input == "h":
                     p_game = player_hit(p_game)
