@@ -121,6 +121,67 @@ def classes():
     
     user_90.reset_login_attempts()
     
-    #
+    # Ice Cream Stand 9-6
+    class IceCreamStand(Restaurant_9_4):
+        
+        def __init__(self, restaurant_name, cuisine_type, number_served=0):
+            super().__init__(restaurant_name, cuisine_type, number_served)
+            self.flavors = ["Vanilla", "Coco", "Rasberry", "Strawberry", "Oreo"]
+        
+        def show_flavors(self):
+            for i in self.flavors:
+                print(i+" flavor is really tasty")
+            
+    hornen_ice = IceCreamStand("HorNen Ice", "Ice Cream")
+    hornen_ice.show_flavors()
+
+    # Admin 9-7
+    class Admin(User_9_5):
+        def __init__(self, first_name, last_name, email, age, login_attempts=0):
+            super().__init__(first_name, last_name, email, age, login_attempts)
+            self.privileges = ["can see everything", "can delete user", "rules this site"]
+
+        def show_privileges(self):
+            for i in self.privileges:
+                print("Admin has this privilege: "+i)
+        
+    hornen = Admin("Felix", "Hörnfeldt", "hornen@boss.se", 18, 9)
+    hornen.show_privileges()
+
+    # Privileges 9-8
+    class Privileges():
+        def __init__(self):
+            self.privileges = ["can see everything", "can delete user", "rules this site"]
+
+        def show_privileges(self):
+            for i in self.privileges:
+                print("Admin has this privilege: "+i)
+    
+    class Admin_9_8(User_9_5):
+        def __init__(self, first_name, last_name, email, age, login_attempts=0):
+            super().__init__(first_name, last_name, email, age, login_attempts)
+            self.privileges = Privileges()
+    
+    hornenAdmin = Admin_9_8("Felix", "Hörnfeldt", "hornen@boss.se", 18, 9)
+    hornenAdmin.privileges.show_privileges()
+
+    # Dice 9-14
+    from random import randint as ri
+
+    class Die():
+        def __init__(self, sides=6):
+            self.sides = sides
+        
+        def roll_die(self):
+            r = ri(1, self.sides)
+            print(str(r)+": The die has "+str(self.sides)+" sides")
+
+    six_sided = Die(6)
+    ten_sided = Die(10)
+    twenty_sided = Die(20)
+    for i in range(10):
+        six_sided.roll_die()
+        ten_sided.roll_die()
+        twenty_sided.roll_die()
 
 classes()
