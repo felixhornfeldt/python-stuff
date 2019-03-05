@@ -1,0 +1,5 @@
+In python you can create objects
+In python you can make graphs
+In python you can have fun
+In python you can wiggle the function
+In python you can create working games
