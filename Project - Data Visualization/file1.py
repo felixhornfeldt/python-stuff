@@ -13,3 +13,5 @@ plt.tick_params(axis='both', labelsize=8)
 
 plt.show()
 
+plt.scatter(2,4)
+plt.show()
