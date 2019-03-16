@@ -6,10 +6,14 @@ data = pd.read_csv('./train.csv')
 
 # print(p)
 
-print(data.columns)
+# print(data.columns)
 
 # data = data.dropna(axis=0)
 # print(data)
 
 y = data.SalePrice
-print(y)
+x = data[['Id', 'SalePrice']]
+
+# print(x.describe())
+# print(x.head())
+# print(y)
