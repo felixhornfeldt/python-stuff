@@ -145,10 +145,10 @@ def q6(s):
 def q7(x,y):
     arr = []
 
-    for x in range(0,x):
+    for z in range(0,x):
         tp = []
         for i in range(0,y):
-            tp.append(x*i)
+            tp.append(z*i)
         arr.append(tp)
 
     return arr
@@ -185,5 +185,246 @@ def q8(s):
 # PRACTICE MAKES PERFECT
 
 def q9():
+    lines = []
 
-    pass
+    while True:
+        string = input()
+        if string:
+            lines.append(string)
+        else:
+            break    
+        
+    for x in lines:
+        print(x.upper())
+
+# q9()
+
+#----------------------------------------#
+# Question 10
+# Level 2
+
+# Question:
+# Write a program that accepts a sequence of whitespace separated words as input and prints the words after removing all duplicate words and sorting them alphanumerically.
+# Suppose the following input is supplied to the program:
+# hello world and practice makes perfect and hello world again
+# Then, the output should be:
+# again and hello makes perfect practice world
+
+def q10():
+    inp = input()
+    arr = inp.split(" ")
+    op = []
+    for x in arr:
+        if x in op:
+            continue
+        else:
+            op.append(x)
+    
+    return sorted(op)
+
+# print(" ".join(q10()))
+
+#----------------------------------------#
+# Question 11
+# Level 2
+
+# Question:
+# Write a program which accepts a sequence of comma separated 4 digit binary numbers as its input and then check whether they are divisible by 5 or not. The numbers that are divisible by 5 are to be printed in a comma separated sequence.
+# Example:
+# 0100,0011,1010,1001
+# Then the output should be:
+# 1010
+# Notes: Assume the data is input by console.
+
+def q11(s):
+    arr = s.split(",")
+    op = []
+    for i in arr:
+        q = 3
+        a = 0
+        z = 0
+        while q >= 0:
+            a += (2**q)*int(i[z])
+            z += 1
+            q -= 1
+            
+        if a%5 == 0:
+            op.append(i)
+
+    return op
+
+# print(",".join(q11(input())))
+
+#----------------------------------------#
+# Question 12
+# Level 2
+
+# Question:
+# Write a program, which will find all such numbers between 1000 and 3000 (both included) such that each digit of the number is an even number.
+# The numbers obtained should be printed in a comma-separated sequence on a single line.
+
+def q12():
+    num = [str(x) for x in range(1000,3001) if int(str(x)[0])%2 == 0 and int(str(x)[1])%2 == 0 and int(str(x)[2])%2 == 0 and int(str(x)[3])%2 == 0]
+    
+    return num
+
+# print(",".join(q12()))
+
+#----------------------------------------#
+# Question 13
+# Level 2
+
+# Question:
+# Write a program that accepts a sentence and calculate the number of letters and digits.
+# Suppose the following input is supplied to the program:
+# hello world! 123
+# Then, the output should be:
+# LETTERS 10
+# DIGITS 3
+
+def q13(s):
+    arr = [x for x in s if x != " "]
+    l = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U", "V", "W", "X", "Y", "Z", "Å", "Ä", "Ö"] 
+    n = [str(x) for x in range(0,10)]
+    lt = 0
+    nt = 0
+    for x in arr:
+        if x.upper() in l:
+            lt += 1
+        elif x in n:
+            nt += 1
+        else:
+            pass
+    
+    return ("LETTERS "+str(lt)+"\nDIGITS "+str(nt))
+
+# print(q13(input()))
+
+#----------------------------------------#
+# Question 14
+# Level 2
+
+# Question:
+# Write a program that accepts a sentence and calculate the number of upper case letters and lower case letters.
+# Suppose the following input is supplied to the program:
+# Hello world!
+# Then, the output should be:
+# UPPER CASE 1
+# LOWER CASE 9
+
+def q14(s):
+    arr = [x for x in s if x != " "]
+    ul = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U", "V", "W", "X", "Y", "Z", "Å", "Ä", "Ö"] 
+    dl = [x.lower() for x in ul]
+    uln = 0
+    dln = 0
+    for x in arr:
+        if x in ul:
+            uln += 1
+        elif x in dl:
+            dln += 1
+        else:
+            pass
+    
+    return ("UPPER CASE "+str(uln)+"\nlower case "+str(dln))
+
+# print(q14(input()))
+
+#----------------------------------------#
+# Question 15
+# Level 2
+
+# Question:
+# Write a program that computes the value of a+aa+aaa+aaaa with a given digit as the value of a.
+# Suppose the following input is supplied to the program:
+# 9
+# Then, the output should be:
+# 11106
+
+def q15(n):
+    n1 = int("%s%s" % (n,n))
+    n2 = int("%s%s%s" % (n,n,n))
+    n3 = int("%s%s%s%s" % (n,n,n,n))
+
+    return (n+n1+n2+n3)
+
+# print(q15(int(input())))
+
+#----------------------------------------#
+# Question 16
+# Level 2
+
+# Question:
+# Use a list comprehension to square each odd number in a list. The list is input by a sequence of comma-separated numbers.
+# Suppose the following input is supplied to the program:
+# 1,2,3,4,5,6,7,8,9
+# Then, the output should be:
+# 1,3,5,7,9
+
+def q16(s):
+    op = [x for x in s.split(",") if int(x)%2 != 0]
+
+    return ",".join(op)
+
+# print(q16(input()))
+
+#----------------------------------------#
+
+# Question 17
+# Level 2
+
+# Question:
+# Write a program that computes the net amount of a bank account based a transaction log from console input. The transaction log format is shown as following:
+# D 100
+# W 200
+
+# D means deposit while W means withdrawal.
+# Suppose the following input is supplied to the program:
+# D 300
+# D 300
+# W 200
+# D 100
+# Then, the output should be:
+# 500
+
+def q17():
+    trans = {"D":0,"W":0}
+    while True:
+        t = input()
+        if t:
+            t = t.split(" ")
+            trans[t[0]] += int(t[1])
+        else: 
+            break
+    
+    return (trans['D']-trans['W'])
+
+# print(q17())
+
+#----------------------------------------#
+# Question 18
+# Level 3
+
+# Question:
+# A website requires the users to input username and password to register. Write a program to check the validity of password input by users.
+# Following are the criteria for checking the password:
+# 1. At least 1 letter between [a-z]
+# 2. At least 1 number between [0-9]
+# 1. At least 1 letter between [A-Z]
+# 3. At least 1 character from [$#@]
+# 4. Minimum length of transaction password: 6
+# 5. Maximum length of transaction password: 12
+# Your program should accept a sequence of comma separated passwords and will check them according to the above criteria. Passwords that match the criteria are to be printed, each separated by a comma.
+# Example
+# If the following passwords are given as input to the program:
+# ABd1234@1,a F1#,2w3E*,2We3345
+# Then, the output of the program should be:
+# ABd1234@1
+
+def q18():
+    s = input()
+    s = [x for x in s.split(",") if len(x) >= 6 and len(x) <= 12]
+    for x in s:
+        pass
+
+print(q18())
