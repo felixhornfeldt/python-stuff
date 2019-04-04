@@ -424,7 +424,158 @@ def q17():
 def q18():
     s = input()
     s = [x for x in s.split(",") if len(x) >= 6 and len(x) <= 12]
+    s_arr = ["$","#","@"]
+    op = []
     for x in s:
+        u = False
+        l = False
+        d = False
+        spec = False
+        for i in x:
+            if i.isupper():
+                u = True
+            if i.islower():
+                l = True
+            if i.isdigit():
+                d = True
+            if i in s_arr:
+                spec = True
+        
+        if u and l and d and spec:
+            op.append(x)
+    
+    return op
+    
+
+# print(q18())
+
+#----------------------------------------#
+# Question 19
+# Level 3
+
+# Question:
+# You are required to write a program to sort the (name, age, height) tuples by ascending order where name is string, age and height are numbers. The tuples are input by console. The sort criteria is:
+# 1: Sort based on name;
+# 2: Then sort based on age;
+# 3: Then sort by score.
+# The priority is that name > age > score.
+# If the following tuples are given as input to the program:
+# Tom,19,80
+# John,20,90
+# Jony,17,91
+# Jony,17,93
+# Json,21,85
+# Then, the output of the program should be:
+# [('John', '20', '90'), ('Jony', '17', '91'), ('Jony', '17', '93'), ('Json', '21', '85'), ('Tom', '19', '80')]
+
+def q19():
+    inputs = []
+    while True:
+        inp = input()
+        if inp:
+            inputs.append(inp)
+        else:
+            break
+    
+    return sorted([tuple(x.split(",")) for x in inputs], key=lambda x: (x[0],x[1],x[2]))
+
+# print(q19())
+
+#----------------------------------------#
+# Question 20
+# Level 3
+
+# Question:
+# Define a class with a generator which can iterate the numbers, which are divisible by 7, between a given range 0 and n.
+
+class Q20():
+    def __init__(self):
         pass
 
-print(q18())
+    def generator(self, n):
+        return (",".join([str(x) for x in range(0,n) if x%7==0]))
+    pass
+
+q_20 = Q20()
+
+# print(q_20.generator(700))
+
+#----------------------------------------#
+# Question 21
+# Level 3
+
+# Question£º
+# A robot moves in a plane starting from the original point (0,0). The robot can move toward UP, DOWN, LEFT and RIGHT with a given steps. The trace of robot movement is shown as the following:
+# UP 5
+# DOWN 3
+# LEFT 3
+# RIGHT 2
+# ¡­
+# The numbers after the direction are steps. Please write a program to compute the distance from current position after a sequence of movement and original point. If the distance is a float, then just print the nearest integer.
+# Example:
+# If the following tuples are given as input to the program:
+# UP 5
+# DOWN 3
+# LEFT 3
+# RIGHT 2
+# Then, the output of the program should be:
+# 2
+
+def q21():
+    arr = []
+    while True:
+        inp = input()
+        if inp:
+            arr.append(tuple(inp.split(" ")))
+        else:
+            break
+
+    org_poi = [0,0]
+    for x in arr:
+        if x[0].upper() == "UP":
+            org_poi[1] += int(x[1])
+        elif x[0].upper() == "DOWN":
+            org_poi[1] -= int(x[1])
+        elif x[0].upper() == "LEFT":
+            org_poi[0] -= int(x[1])
+        elif x[0].upper() == "RIGHT":
+            org_poi[0] += int(x[1])
+    
+    return (round((org_poi[0]**2+org_poi[1]**2)**(1/2)))
+
+# print(q21())
+
+#----------------------------------------#
+# Question 22
+# Level 3
+
+# Question:
+# Write a program to compute the frequency of the words from the input. The output should output after sorting the key alphanumerically. 
+# Suppose the following input is supplied to the program:
+# New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3.
+# Then, the output should be:
+# 2:2
+# 3.:1
+# 3?:1
+# New:1
+# Python:5
+# Read:1
+# and:1
+# between:1
+# choosing:1
+# or:2
+# to:1
+
+def q22():
+    inp = input().split(" ")
+    d = {}
+
+    for x in inp:
+        if x not in d.keys():
+            d[x] = 1
+        else:
+            d[x] += 1
+    
+    return d
+
+print(q22())
